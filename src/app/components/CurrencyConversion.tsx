@@ -121,13 +121,21 @@ export const CurrencyConversion = () => {
             currencies={currencies}
             handleCurrencyChange={handleCurrencyChange}
           >
-            <input
-              className='bg-white text-black rounded p-4'
-              type='number'
-              value={amount}
-              onChange={(e) => setAmount(e.target.value)}
-              onKeyDown={(e) => handleKeyDown(e as unknown as KeyboardEvent)}
-            />
+            <div className='flex gap-1 items-center w-full bg-white rounded pl-3'>
+              {fromCurrency?.symbol && (
+                <span className='min-w-4 flex-shrink-0'>
+                  {fromCurrency?.symbol}
+                </span>
+              )}
+              <input
+                className='bg-white text-black rounded p-4 w-full flex-grow'
+                type='number'
+                value={amount}
+                onChange={(e) => setAmount(e.target.value)}
+                onKeyDown={(e) => handleKeyDown(e as unknown as KeyboardEvent)}
+                placeholder='Enter amount'
+              />
+            </div>
           </CurrencyConversionSection>
           <CurrencyConversionSection
             conversionType='to'
@@ -176,7 +184,7 @@ const CurrencyConversionSection = ({
   handleCurrencyChange,
 }: CurrencyConversionSectionProps) => {
   return (
-    <div className='flex flex-col gap-1 w-full'>
+    <div className='flex flex-col gap-3 w-full'>
       <p className='text-center uppercase text-sm'>{conversionType}</p>
       <CurrencySelector
         selectedCode={selectedCode}
