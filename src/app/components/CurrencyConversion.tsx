@@ -93,7 +93,7 @@ export const CurrencyConversion = () => {
     setConvertedValue(null);
   };
 
-  const handleCurrencyChange = (code: string, type: 'from' | 'to') => {
+  const handleCurrencyChange = (code: string, type: ConversionType) => {
     const currency = currencies.find(
       (currency) => currency.short_code === code
     );
@@ -136,7 +136,7 @@ export const CurrencyConversion = () => {
             handleCurrencyChange={handleCurrencyChange}
           >
             <p
-              className={`bg-gray-100 text-black rounded p-4 h-14 flex justify-center align-center text-center font-semibold text-lg`}
+              className={`bg-gray-300 text-black rounded p-4 h-14 flex justify-center align-center text-center font-semibold text-lg`}
             >
               {convertedValue}
             </p>
@@ -238,7 +238,7 @@ type CurrencyConversionSectionProps = {
   conversionType: ConversionType;
   selectedCode: string;
   currencies: Currency[];
-  handleCurrencyChange: (code: string, type: 'from' | 'to') => void;
+  handleCurrencyChange: (code: string, type: ConversionType) => void;
 };
 
 type ConversionType = 'from' | 'to';
